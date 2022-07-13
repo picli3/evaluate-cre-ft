@@ -123,31 +123,10 @@
                                 </v-text-field>
                             </v-col>
                         </v-row>
-                        <v-btn block color="success" size="large">Consultar</v-btn>
+                        <v-btn block color="success" size="large" @click="validar()">Consultar</v-btn>
                     </v-col>
                 </v-row>
             </v-container>
-
-            <v-row justify="space-around">
-                <v-col cols="auto">
-                    <v-dialog transition="dialog-bottom-transition">
-                        <template v-slot:activator="{ props }">
-                            <v-btn color="primary" v-bind="props">From the bottom</v-btn>
-                        </template>
-                        <template v-slot:default="{ isActive }">
-                            <v-card>
-                                <v-card-text>
-                                    <div class="text-h2 pa-12">Estado credito</div>
-                                </v-card-text>
-                                <v-card-actions class="justify-end">
-                                    <v-btn text @click="isActive.value = false">Aceptar</v-btn>
-                                </v-card-actions>
-                            </v-card>
-                        </template>
-                    </v-dialog>
-                </v-col>
-            </v-row>
-
         </v-main>
     </v-layout>
 </template>
@@ -183,7 +162,21 @@ const datosUser = ref({
     COMM_FRAUD_INV: 'FALSE'
 })
 
-console.log(theme.global.name.value)
+const validar = () => {
+    console.log(datosUser.value)
+
+    const response = fetch('http://localhost:3030/api/evaluate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:  JSON.stringify(datosUser.value) 
+    })
+
+    console.log(response)
+}
+
+
 const toggleTheme = () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 
 </script>

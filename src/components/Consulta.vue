@@ -41,9 +41,9 @@
                         <br>
                         <v-window v-model="tab">
                             <v-window-item value="one">
-                                <v-row>
+                                <v-row class="mt-2">
                                     <v-col>
-                                        <v-text-field label="Nombre y apellido" variant="outlined" v-model="name">
+                                        <v-text-field label="Nombre y apellido" variant="outlined" v-model="name" required>
                                         </v-text-field>
                                     </v-col>
                                     <v-col>
@@ -228,7 +228,7 @@ const validar = async () => {
             });
 
         }
-        datosUser.value.INCOME = ""
+       /* datosUser.value.INCOME = ""
         datosUser.value.YRS_AT_CURRENT_ADDRESS = ''
         datosUser.value.YRS_WITH_CURRENT_EMPLOYER = ''
         datosUser.value.NUMBER_OF_CARDS = ''
@@ -241,9 +241,9 @@ const validar = async () => {
         datosUser.value.EDUCATION = ''
         datosUser.value.EMPLOYMENT_STATUS = ''
         datosUser.value.MARITAL_STATUS = ''
-        datosUser.value.RESIDENCE = ''
+        datosUser.value.RESIDENCE = ''*/
 
-        console.log(respuesta.respuesta.predictions[0].values[0][0])
+        //console.log(respuesta.respuesta.predictions[0].values[0][0])
     } catch (error) {
         console.error(error)
     }
